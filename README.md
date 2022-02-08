@@ -1,5 +1,9 @@
 # Google Fit Sync
 
+This is a basic implementation of Google Fit API that reads blood pressure values (systolic and diastolic) and displays them in a recycler view. It also manages the user permissions Work-Flow.
+
+The readings are from the last month and the display value is the average number for that day (see Buckets documentation). Improvements can be made.
+
 ## Userful links
 Get started  
 https://developers.google.com/fit/android/get-started  
