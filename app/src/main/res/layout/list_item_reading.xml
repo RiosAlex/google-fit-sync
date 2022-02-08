@@ -67,6 +67,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/exclamation_sign"
+            android:visibility="gone"
             android:contentDescription="@string/warning_image_content_description" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

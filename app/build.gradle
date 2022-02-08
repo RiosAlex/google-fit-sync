@@ -46,4 +46,7 @@ dependencies {
     // Google Fit API
     implementation 'com.google.android.gms:play-services-fitness:21.0.1'
     implementation 'com.google.android.gms:play-services-auth:20.1.0'
+
+    // Swipe to refresh
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
 }
