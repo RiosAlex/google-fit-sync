@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Google Fit Sync</string>
+    <string name="last_sync"><b>Last Google Fit Sync:</b> %1$s</string>
+    <string name="enable_google_fit">Enable Google Fit</string>
+    <string name="systolic"><b>Sys:</b> %.0f</string>
+    <string name="diastolic"><b>Dia:</b> %.0f</string>
+    <string name="date">%1$s</string>
+    <string name="blood_pressure_icon_content_description">Blood pressure icon</string>
+    <string name="warning_image_content_description">Warning image</string>
+    <string name="loading"><b>Last Google Fit Sync:</b> Loading...</string>
+    <string name="please_enable_google_fit">Please enable Google Fit</string>
+    <string name="enable_google_fit_dialog_description">In order to read your blood pressure, we need access to Google Fit. Please press Enable Google Fit button and select your account.</string>
+    <string name="loaded">Last month readings updated</string>
+    <string name="failed_to_load">Error while loading data, see logs for full details.</string>
+    <string name="we_need_permissions">We need Google Fit permissions in order to display data.</string>
+</resources>
