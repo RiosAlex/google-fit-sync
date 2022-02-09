@@ -16,6 +16,8 @@ import com.google.android.gms.fitness.FitnessOptions
 import com.google.android.gms.fitness.data.HealthDataTypes
 import com.google.android.gms.fitness.data.HealthFields.*
 import com.google.android.gms.fitness.request.DataReadRequest
+import com.google.android.gms.fitness.request.OnDataPointListener
+import com.google.android.gms.fitness.request.SensorRequest
 import com.google.android.material.snackbar.Snackbar
 import health.brook.googlefitsync.R
 import health.brook.googlefitsync.adapters.BloodReadingAdapter
@@ -86,7 +88,6 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         // TODO: Update deprecated usage of Activity Result
         super.onActivityResult(requestCode, resultCode, data)
@@ -113,7 +114,10 @@ class MainActivity : AppCompatActivity() {
             mFitnessOptions)
     }
 
-
+    override fun onResume() {
+        super.onResume()
+        loadReadings()
+    }
 
     private fun loadReadings () {
 
@@ -146,9 +150,9 @@ class MainActivity : AppCompatActivity() {
                     bucket.dataSets.forEach {
                         if (!it.isEmpty) {
                             val systolic = it.dataPoints[0].getValue(
-                                FIELD_BLOOD_PRESSURE_SYSTOLIC_AVERAGE).asFloat()
+                                FIELD_BLOOD_PRESSURE_SYSTOLIC_MIN).asFloat()
                             val diastolic = it.dataPoints[0].getValue(
-                                FIELD_BLOOD_PRESSURE_DIASTOLIC_AVERAGE).asFloat()
+                                FIELD_BLOOD_PRESSURE_DIASTOLIC_MIN).asFloat()
                             val date = it.dataPoints[0].getEndTime(TimeUnit.MILLISECONDS)
                             readingsList.add(BloodReading(systolic, diastolic, date))
                         }
@@ -172,6 +176,10 @@ class MainActivity : AppCompatActivity() {
                 swipeToRefreshLayout.isRefreshing = false
                 Snackbar.make(window.decorView, getString(R.string.failed_to_load), Snackbar.LENGTH_LONG).show()
             }
+
+        Fitness.getSensorsClient(this, account).add(SensorRequest.Builder().setDataType(HealthDataTypes.TYPE_BLOOD_PRESSURE).setSamplingRate(1, TimeUnit.SECONDS).build(), OnDataPointListener {
+            println(it)
+        })
 
 
         /* TODO: This is the progress for real-time changes tracking
